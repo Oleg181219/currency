@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="olegprokhorov (generated)" id="1623317016641-1">
+        <createTable tableName="transactional">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="source_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="source_summ" type="DECIMAL(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target_summ" type="DECIMAL(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="olegprokhorov (generated)" id="1623317016641-2">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="login" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="olegprokhorov (generated)" id="1623317016641-3">
+        <createIndex indexName="FKa22l0a7x499i0dwnxg2t6dkbt" tableName="transactional">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="olegprokhorov (generated)" id="1623317016641-4">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="transactional" constraintName="FKa22l0a7x499i0dwnxg2t6dkbt" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
