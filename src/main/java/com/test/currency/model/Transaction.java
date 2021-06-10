@@ -29,7 +29,8 @@ public class Transaction {
     @Column(name = "target_name", nullable = false)
     private String targetName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+
 
 }
