@@ -6,7 +6,9 @@ import com.test.currency.api.response.ResponseData;
 import com.test.currency.utils.LiveResponseCurrency;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class TransactionService {
@@ -27,13 +29,6 @@ public class TransactionService {
     public ResponseEntity<Response> getTransactialValue(ExchangeRequest exchangeRequest) {
 
 //        https://api.currencylayer.com/convert?access_key=YOUR_ACCESS_KEY&from=USD&to=GBP&amount=10
-//
-//
-//
-//                & amount = 10
-
-//        HttpGet get = new HttpGet(BASE_URL + ENDPOINT + "?access_key=" + ACCESS_KEY);
-
 
 
         var from = exchangeRequest.getSourceName().toUpperCase();

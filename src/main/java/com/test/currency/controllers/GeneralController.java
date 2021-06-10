@@ -6,6 +6,7 @@ import com.test.currency.api.response.Response;
 import com.test.currency.services.TransactionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 
 @Controller
-@Api
+@Api(value = "/")
 public class GeneralController {
 
-    private final TransactionService transactionService;
+
+    private  TransactionService transactionService;
+
 
     public GeneralController(TransactionService transactionService) {
         this.transactionService = transactionService;
@@ -26,15 +29,15 @@ public class GeneralController {
 
 
     @GetMapping("/")
-    public String index() {
-        return "forward:/swagger-ui.html";
+    public String root() {
+        return "redirect:/swagger-ui.html";
     }
 
     @ApiOperation(value = "Проведение операции по переводу")
     @GetMapping("/exchange")
     public ResponseEntity<Response> getTransactionResult(@Valid @RequestBody ExchangeRequest exchangeRequest,
-                                                         BindingResult error){
-        if(error != null){
+                                                         BindingResult error) {
+        if (error != null) {
             return ResponseEntity.badRequest().body(new ErrorResponse("веденые данные не верны"));
         }
         return transactionService.getTransactialValue(exchangeRequest);
