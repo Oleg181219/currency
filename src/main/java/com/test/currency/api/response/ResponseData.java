@@ -9,6 +9,7 @@ import org.json.JSONObject;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseData implements Response{
+
     private JSONObject object;
 
 

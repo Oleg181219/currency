@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -28,7 +29,7 @@ public class CurrencyApplication {
 		String groupName = "Swagger";
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.withClassAnnotation(Controller.class))
+				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 				.paths(regex("/.*"))
 				.build()
 				.groupName(groupName)

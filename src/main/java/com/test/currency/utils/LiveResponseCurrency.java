@@ -22,14 +22,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class LiveResponseCurrency {
 
-    //    public static final String ACCESS_KEY = "f5b338e9b91ee6e8fd35c6c636cc9172";
-//    public static final String BASE_URL = "http://api.currencylayer.com/";
-//    public static final String ENDPOINT = "live";
     static CloseableHttpClient httpClient = HttpClients.createDefault();
     private JSONObject exchangeRates;
 
     public JSONObject sendLiveRequest(String requestToBase) {
-//         = new JSONObject();
+
         HttpGet get = new HttpGet(requestToBase);
 
         try {
