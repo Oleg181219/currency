@@ -1,12 +1,5 @@
 package com.test.currency.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
@@ -19,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Component
 public class LiveResponseCurrency {
 
@@ -27,26 +22,15 @@ public class LiveResponseCurrency {
 
     public JSONObject sendLiveRequest(String requestToBase) {
 
-        HttpGet get = new HttpGet(requestToBase);
+        var get = new HttpGet(requestToBase);
 
         try {
             CloseableHttpResponse response = httpClient.execute(get);
             HttpEntity entity = response.getEntity();
             exchangeRates = new JSONObject(EntityUtils.toString(entity));
-            response.close();
-            httpClient.close();
+//            response.close();
+//            httpClient.close();
 
-
-//            Date timeStampDate = new Date((long)(exchangeRates.getLong("timestamp")*1000));
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
-//            String formattedDate = dateFormat.format(timeStampDate);
-//
-//            var xxx = "1 " + exchangeRates.getString("source") + " in GBP : " + exchangeRates.getJSONObject("quotes").getDouble("USDGBP") + " (Date: " + formattedDate + ")"
-////            System.out.println("1 " + exchangeRates.getString("source") + " in GBP : " + exchangeRates.getJSONObject("quotes").getDouble("USDGBP") + " (Date: " + formattedDate + ")");
-//            System.out.println("\n");
-//            System.out.println(xxx);
-//
-//
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -63,10 +47,4 @@ public class LiveResponseCurrency {
         return exchangeRates;
     }
 
-    // sendLiveRequest() function is executed
-//    public static void main(String[] args) throws IOException{
-//        sendLiveRequest();
-//        httpClient.close();
-//        new BufferedReader(new InputStreamReader(System.in)).readLine();
-//    }
 }
