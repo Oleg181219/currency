@@ -1,4 +1,4 @@
-package com.test.currency.model;
+package com.test.currency.model.ENUM;
 
 public enum Currencies {
 

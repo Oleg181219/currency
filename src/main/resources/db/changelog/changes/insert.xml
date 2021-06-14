@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet id="insert data to course" author="olegp">
+        <insert tableName="course">
+            <column name="currency_name" value="USDAED"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAFN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDALL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAMD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDANG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAOA"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDARS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAUD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAWG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDAZN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBAM"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBBD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBDT"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBGN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBHD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBIF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBMD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBOB"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBRL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBSD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBTC"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBTN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBWP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBYR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDBZD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCAD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCDF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCHF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCLF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCLP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCNY"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCOP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCRC"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCUC"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCUP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCVE"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCZK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDDJF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDDKK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDDOP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDDZD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDEGP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDERN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDETB"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDEUR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDFJD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDFKP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGBP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGEL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGGP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGHS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGIP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGMD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGNF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGTQ"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDGYD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDHKD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDHNL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDHRK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDHTG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDHUF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDIDR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDILS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDIMP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDINR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDIQD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDIRR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDISK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDJEP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDJMD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDJOD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDJPY"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKES"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKGS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKHR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKMF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKPW"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKRW"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDCLF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKWD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKYD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDKZT"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLAK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLBP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLKR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLRD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLSL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLTL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLVL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDLYD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMAD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMDL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMKD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMMK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMNT"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMOP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMRO"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMUR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMVR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMWK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMXN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMYR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDMZN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNAD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNGN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNIO"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNOK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNPR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDNZD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDOMR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPAB"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPEN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPGK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPHP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPKR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPLN"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDPYG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDQAR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDRON"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDRSD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDRUB"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDRWF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSAR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSBD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSDG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSEK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSGD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSHP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSLL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSOS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSRD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSTD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSVC"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSYP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSZL"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTHB"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTJS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTMT"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTND"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTOP"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTRY"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTTD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTWD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDTZS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDUAH"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDUGX"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDUSD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDUYU"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDSCR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDUZS"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDVEF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDVND"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDVUV"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDWST"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXAF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXAG"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXAU"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXCD"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXDR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXOF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDXPF"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDYER"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDZAR"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDZMK"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDZMW"/>
+            <column name="course" value="0"/>
+        </insert>
+        <insert tableName="course">
+            <column name="currency_name" value="USDZWL"/>
+            <column name="course" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

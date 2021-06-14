@@ -1,50 +1,98 @@
 package com.test.currency.utils;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.currency.model.ENUM.Currencies;
+import com.test.currency.model.dto.Currencylayer;
+import com.test.currency.model.dto.Quotes;
+import com.test.currency.repositories.CourseRepositories;
 import org.apache.http.HttpEntity;
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 
 @Component
+@EnableScheduling
 public class LiveResponseCurrency {
-
-    static CloseableHttpClient httpClient = HttpClients.createDefault();
+    private final String ACCESS_KEY = "f5b338e9b91ee6e8fd35c6c636cc9172";
+    private final String BASE_URL = "http://api.currencylayer.com/live?access_key=";
+    private final String FROM = "&currencies=";
+    private final String TO = ",";
+    private final String QUOTES = "quotes";
+    private Currencylayer currencylayer = new Currencylayer();
+    private CloseableHttpClient httpClient = HttpClients.createDefault();
     private JSONObject exchangeRates;
 
-    public JSONObject sendLiveRequest(String requestToBase) {
+    @Autowired
+    private final CourseRepositories courseRepositories;
 
-        var get = new HttpGet(requestToBase);
+    public LiveResponseCurrency(CourseRepositories courseRepositories) {
+        this.courseRepositories = courseRepositories;
+    }
 
-        try {
-            CloseableHttpResponse response = httpClient.execute(get);
-            HttpEntity entity = response.getEntity();
-            exchangeRates = new JSONObject(EntityUtils.toString(entity));
-//            response.close();
-//            httpClient.close();
 
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return exchangeRates;
+    @Scheduled(cron = "0 0 12 * * ?")
+    public void sendLiveRequest() {
+
+        System.out.println("Renew STARTED");
+        Runnable task = () -> {
+            try {
+                var mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                var currenciesList = Arrays.stream(Currencies.values()).collect(Collectors.toList());
+                var builder = new StringBuilder();
+
+                for (Currencies currencies : currenciesList) {
+                    builder.append(currencies.name()).append(",");
+                }
+
+                builder.setLength(builder.length() - 1);
+                var requestToBase = BASE_URL + ACCESS_KEY + FROM + builder.toString();
+                var get = new HttpGet(requestToBase);
+
+                try {
+                    CloseableHttpResponse response = httpClient.execute(get);
+                    HttpEntity entity = response.getEntity();
+                    exchangeRates = new JSONObject(EntityUtils.toString(entity));
+                    currencylayer = mapper.readValue(exchangeRates.toString(), Currencylayer.class);
+                    response.close();
+                    httpClient.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                ArrayList<Quotes> fromDb = courseRepositories.findAll();
+
+                for(var i = 0;i< fromDb.size();i++){
+                    int finalI = i;
+                    currencylayer.getQuotes().forEach((key, value) -> {
+                        if(fromDb.get(finalI).getCurrencyName().equals(key)){
+                            fromDb.get(finalI).setCourse(value);
+                        }
+                    });
+
+                }
+                courseRepositories.saveAll(fromDb);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        };
+
+        Thread thread = new Thread(task);
+        thread.start();
+
     }
 
 }

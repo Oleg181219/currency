@@ -12,4 +12,4 @@ spring:
     user: root
     password: root
     enabled: true
-    change-log: db/changelog/db.changelog.xml
+    change-log: db/changelog/db.changelog-master.yml

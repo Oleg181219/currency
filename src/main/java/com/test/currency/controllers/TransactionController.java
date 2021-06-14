@@ -3,7 +3,7 @@ package com.test.currency.controllers;
 import com.test.currency.api.request.ExchangeRequest;
 import com.test.currency.api.response.ErrorResponse;
 import com.test.currency.api.response.Response;
-import com.test.currency.model.Currencies;
+import com.test.currency.model.ENUM.Currencies;
 import com.test.currency.services.TransactionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
@@ -25,11 +26,8 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-
-
     @PostMapping(value = "/exchange")
-
-    public ResponseEntity<Response> getTransactionResult(@RequestBody ExchangeRequest exchangeRequest) {
+    public ResponseEntity<Response> getTransactionResult(@RequestBody ExchangeRequest exchangeRequest) throws IOException {
 
         if (Arrays.stream(Currencies.values())
                 .noneMatch(t -> t.name()
