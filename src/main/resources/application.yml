@@ -13,3 +13,8 @@ spring:
     password: root
     enabled: true
     change-log: db/changelog/db.changelog-master.yml
+
+currency:
+  ACCESS_KEY: ${ACCESS_KEY}
+logging:
+  config: classpath:log4j2-spring.xml

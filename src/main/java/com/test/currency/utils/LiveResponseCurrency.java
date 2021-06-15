@@ -6,18 +6,23 @@ import com.test.currency.model.ENUM.Currencies;
 import com.test.currency.model.dto.Currencylayer;
 import com.test.currency.model.dto.Quotes;
 import com.test.currency.repositories.CourseRepositories;
+import com.test.currency.services.TransactionService;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -26,7 +31,9 @@ import java.util.stream.Collectors;
 @Component
 @EnableScheduling
 public class LiveResponseCurrency {
-    private final String ACCESS_KEY = "f5b338e9b91ee6e8fd35c6c636cc9172";
+    private final Logger logger = LogManager.getLogger(TransactionService.class);
+    @Value("${currency.ACCESS_KEY}")
+    private String ACCESS_KEY;
     private final String BASE_URL = "http://api.currencylayer.com/live?access_key=";
     private final String FROM = "&currencies=";
     private final String TO = ",";
@@ -46,9 +53,9 @@ public class LiveResponseCurrency {
     @Scheduled(cron = "0 0 12 * * ?")
     public void sendLiveRequest() {
 
-        System.out.println("Renew STARTED");
         Runnable task = () -> {
             try {
+                logger.warn("renew data from http://www.currencylayer.com/");
                 var mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 var currenciesList = Arrays.stream(Currencies.values()).collect(Collectors.toList());
@@ -75,10 +82,10 @@ public class LiveResponseCurrency {
 
                 ArrayList<Quotes> fromDb = courseRepositories.findAll();
 
-                for(var i = 0;i< fromDb.size();i++){
+                for (var i = 0; i < fromDb.size(); i++) {
                     int finalI = i;
                     currencylayer.getQuotes().forEach((key, value) -> {
-                        if(fromDb.get(finalI).getCurrencyName().equals(key)){
+                        if (fromDb.get(finalI).getCurrencyName().equals(key)) {
                             fromDb.get(finalI).setCourse(value);
                         }
                     });
@@ -95,4 +102,8 @@ public class LiveResponseCurrency {
 
     }
 
+    @PostConstruct
+    private void getStartData(){
+        sendLiveRequest();
+    }
 }

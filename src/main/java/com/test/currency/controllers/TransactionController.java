@@ -6,6 +6,8 @@ import com.test.currency.api.response.Response;
 import com.test.currency.model.ENUM.Currencies;
 import com.test.currency.services.TransactionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +18,10 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 @RestController
-@Tag(name="Transaction Controller", description="Конвертация валют")
+@Tag(name = "Transaction Controller", description = "Конвертация валют")
 public class TransactionController {
 
+    private final Logger logger = LogManager.getLogger(TransactionController.class);
     private final TransactionService transactionService;
 
 
@@ -35,13 +38,14 @@ public class TransactionController {
                 Arrays.stream(Currencies.values())
                         .noneMatch(t -> t.name()
                                 .equals(exchangeRequest.getTargetName().toUpperCase()))) {
+            logger.error(exchangeRequest.getSourceName(), exchangeRequest.getTargetName());
             return ResponseEntity.badRequest().body(new ErrorResponse("wrong currencies"));
         }
-        if(exchangeRequest.getUserId() == null || exchangeRequest.getSourceSum() == null){
+        if (exchangeRequest.getUserId() == null || exchangeRequest.getSourceSum() == null) {
             return ResponseEntity.badRequest().body(new ErrorResponse("empty sum or user ID"));
         }
-        if(exchangeRequest.getUserId() < 0 ||
-                exchangeRequest.getSourceSum().compareTo(new BigDecimal("0")) <= 0){
+        if (exchangeRequest.getUserId() < 0 ||
+                exchangeRequest.getSourceSum().compareTo(new BigDecimal("0")) <= 0) {
             return ResponseEntity.badRequest().body(new ErrorResponse("sum or user ID <= 0"));
         }
 

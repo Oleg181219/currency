@@ -3,101 +3,86 @@ package com.test.currency.services;
 import com.test.currency.api.request.ExchangeRequest;
 import com.test.currency.api.response.Response;
 import com.test.currency.api.response.ResponseData;
+import com.test.currency.model.Transaction;
+import com.test.currency.repositories.CourseRepositories;
 import com.test.currency.repositories.TransactionRepositories;
 import com.test.currency.utils.LiveResponseCurrency;
 import io.swagger.v3.oas.annotations.Operation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 
 
 @Service
 public class TransactionService {
 
+    private final Logger logger = LogManager.getLogger(TransactionService.class);
+
 
     private final LiveResponseCurrency liveResponseCurrency;
     private final TransactionRepositories transactionRepositories;
+    private final CourseRepositories courseRepositories;
 
     public TransactionService(LiveResponseCurrency liveResponseCurrency,
-                              TransactionRepositories transactionRepositories) {
+                              TransactionRepositories transactionRepositories,
+                              CourseRepositories courseRepositories) {
         this.liveResponseCurrency = liveResponseCurrency;
         this.transactionRepositories = transactionRepositories;
+        this.courseRepositories = courseRepositories;
     }
 
     @Operation(summary = "Конвертация валют",
             description = "Конвертирует валюту, с указанием суммы конертации исходной валюты")
     public ResponseEntity<Response> getTransactionValue(ExchangeRequest request) throws IOException {
+        ResponseData responseData = new ResponseData();
+        var userId = request.getUserId();
+        var sourceName = "USD" + request.getSourceName().toUpperCase();
+        var targetName = "USD" + request.getTargetName().toUpperCase();
+        var sourceSum = request.getSourceSum();
 
 
+/**
+ * 1- получение текущих курсов источника и таргета из БД
+ * 2- пересчитываем результат
+ * 3- запись в базу
+ * 4- возврат результата на фронт.
+ */
 
 
-//        HashMap<String, BigDecimal> base = new HashMap<>();
-//        var sss = Arrays.stream(Currencies.values()).collect(Collectors.toList());
-//        StringBuilder ass = new StringBuilder();
-//
-//
-//        for (Currencies currencies : sss) {
-//            ass.append(currencies.name()).append(",");
-//            base.put(currencies.name(), new BigDecimal("0"));
-//        }
-////        System.out.println(base.size());
-////        System.out.println(sss.size());
-////        base.forEach((key, value) -> System.out.println(key + " " + value));
-//
-//
-//        ass.setLength(ass.length() - 1);
-////        var transaction = new Transaction();
-//        var requestToBase = BASE_URL + ACCESS_KEY + FROM + ass.toString();
-//
-//        var object = liveResponseCurrency.sendLiveRequest(requestToBase);
-//
-//        Map<String, Object> map = object.toMap();
-////       1
-//        ObjectMapper mapper = new ObjectMapper();
-//        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-////       2
-//
-//        System.out.println(object);
-//        Currencylayer currencylayer = mapper.readValue(object.toString(), Currencylayer.class);
-//        System.out.println(currencylayer.getQuotes());
-//        var bbb = map.get(QUOTES);
-//
-//        System.out.println(map.get(QUOTES));
+        var dataFromBd = courseRepositories.findAll();
+        var source = dataFromBd
+                .stream()
+                .filter(a -> a.getCurrencyName().equals(sourceName))
+                .findAny();
 
-//
-//        var www = object.get(QUOTES);
-//        System.out.println(object.get(QUOTES));
-//        JSONObject newq = (JSONObject) object.get(QUOTES);
-//
-//        var source = new BigDecimal(object.get(QUOTES).toString()
-//                .substring(object.get(QUOTES).toString().indexOf(":") + 1,
-//                        object.get(QUOTES).toString().indexOf(",")));
-//
-//
-//        var target = new BigDecimal(object.get(QUOTES).toString()
-//                .substring(object.get(QUOTES).toString().lastIndexOf(":") + 1,
-//                        object.get(QUOTES).toString().lastIndexOf("}")));
-//
-//
-//        var exchCourse = target.divide(source, 6, RoundingMode.HALF_DOWN);
-//
-//
-//        var result = exchCourse
-//                .multiply(request.getSourceSum())
-//                .setScale(2, RoundingMode.HALF_DOWN);
-//
-//
-//        transaction.setSourceName(request.getSourceName());
-//        transaction.setTargetName(request.getTargetName());
-//        transaction.setUserId(request.getUserId());
-//        transaction.setSourceSumm(request.getSourceSum());
-//        transaction.setTargetSumm(result);
-//
-//
-//        var transactionId = transactionRepositories.save(transaction).getId();
 
-        return ResponseEntity.ok(new ResponseData());
+        var target = dataFromBd
+                .stream()
+                .filter(a -> a.getCurrencyName().equals(targetName))
+                .findAny();
+
+        if (target.isPresent() && source.isPresent()) {
+
+            var resultSum = target.get().getCourse()
+                    .divide(source.get().getCourse(), 6, RoundingMode.HALF_EVEN);
+
+            responseData.setResultSum(resultSum.multiply(sourceSum).setScale(2, RoundingMode.HALF_DOWN));
+            Transaction transaction = new Transaction();
+            transaction.setUserId(userId);
+            transaction.setSourceName(sourceName.substring(3));
+            transaction.setSourceSumm(sourceSum);
+            transaction.setTargetName(targetName.substring(3));
+            transaction.setTargetSumm(responseData.getResultSum());
+            responseData.setRequestId(transactionRepositories.save(transaction).getId());
+
+        }
+
+
+        return ResponseEntity.ok(responseData);
 
     }
 }

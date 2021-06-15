@@ -8,4 +8,6 @@ import java.util.ArrayList;
 public interface CourseRepositories extends JpaRepository<Quotes, Long> {
 
     ArrayList<Quotes> findAll();
+
+
 }
