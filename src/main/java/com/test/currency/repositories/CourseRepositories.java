@@ -1,6 +1,6 @@
 package com.test.currency.repositories;
 
-import com.test.currency.model.dto.Quotes;
+import com.test.currency.model.Quotes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;

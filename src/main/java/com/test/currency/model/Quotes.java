@@ -1,4 +1,4 @@
-package com.test.currency.model.dto;
+package com.test.currency.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

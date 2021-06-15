@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.currency.model.ENUM.Currencies;
 import com.test.currency.model.dto.Currencylayer;
-import com.test.currency.model.dto.Quotes;
+import com.test.currency.model.Quotes;
 import com.test.currency.repositories.CourseRepositories;
 import com.test.currency.services.TransactionService;
 import org.apache.http.HttpEntity;
@@ -22,7 +22,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -97,13 +96,13 @@ public class LiveResponseCurrency {
             }
         };
 
-        Thread thread = new Thread(task);
+        var thread = new Thread(task);
         thread.start();
 
     }
-
-    @PostConstruct
-    private void getStartData(){
-        sendLiveRequest();
-    }
+//
+//    @PostConstruct
+//    private void getStartData(){
+//        sendLiveRequest();
+//    }
 }

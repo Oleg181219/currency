@@ -44,15 +44,6 @@ public class TransactionService {
         var targetName = "USD" + request.getTargetName().toUpperCase();
         var sourceSum = request.getSourceSum();
 
-
-/**
- * 1- получение текущих курсов источника и таргета из БД
- * 2- пересчитываем результат
- * 3- запись в базу
- * 4- возврат результата на фронт.
- */
-
-
         var dataFromBd = courseRepositories.findAll();
         var source = dataFromBd
                 .stream()
@@ -78,10 +69,7 @@ public class TransactionService {
             transaction.setTargetName(targetName.substring(3));
             transaction.setTargetSumm(responseData.getResultSum());
             responseData.setRequestId(transactionRepositories.save(transaction).getId());
-
         }
-
-
         return ResponseEntity.ok(responseData);
 
     }

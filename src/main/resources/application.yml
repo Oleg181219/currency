@@ -18,3 +18,4 @@ currency:
   ACCESS_KEY: ${ACCESS_KEY}
 logging:
   config: classpath:log4j2-spring.xml
+
